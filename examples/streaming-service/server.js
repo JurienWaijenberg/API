@@ -14,13 +14,16 @@ const app = new App();
 app
   .use(logger())
   .use('/', sirv('dist/assets'))
+  .use('/', sirv('src'))
+  .use('/', sirv('views'))
+  .use('/', sirv('components/poster'))
   .listen(3000);
 
 app.get('/', async (req, res) => {
 
   const movieData = await getMovies();
   return res.send(renderTemplate('views/index.liquid', { title: 'Movies', movieData }));
-  // return res.send(renderTemplate('views/index.liquid', { title: 'Home' }));
+  return res.send(renderTemplate('views/index.liquid', { title: 'Home' }));
 });
 
 app.get('/movie/:id/', async (req, res) => {
