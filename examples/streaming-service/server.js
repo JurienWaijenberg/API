@@ -20,7 +20,6 @@ app
   .listen(3000);
 
 app.get('/', async (req, res) => {
-
   const movieData = await getMovies();
   return res.send(renderTemplate('views/index.liquid', { title: 'Movies', movieData }));
   return res.send(renderTemplate('views/index.liquid', { title: 'Home' }));
@@ -31,6 +30,18 @@ app.get('/movie/:id/', async (req, res) => {
   const movie = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.MOVIEDB_TOKEN}`).then(res => res.json());
   return res.send(renderTemplate('views/detail.liquid', { title: 'Movie', movie }));
 });
+
+app.get('/search', async (req, res) => {
+  const searchTerm = req.query.term;
+  
+  const movieSearch = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${process.env.MOVIEDB_TOKEN}`).then(res => res.json());
+  console.log(movieSearch);
+  return res.send(renderTemplate('views/search-results.liquid', { title: 'Search results', movieSearch }));
+
+  
+});
+
+
 
 const getMovies = async () => {
   const response = await fetch(`https://api.themoviedb.org/3/trending/all/day?language=en-US&api_key=${process.env.MOVIEDB_TOKEN}`);

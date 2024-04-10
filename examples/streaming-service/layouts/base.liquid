@@ -19,6 +19,14 @@
 </head>
 
 <body>
+  <head>
+    <form action="/search" method="get">
+      <label for="search">Search</label>
+      <input id="search" type="search" name="term">
+
+      <button type="submit">Search</button>
+    </form>
+  </head>
   {% block content %}{% endblock %}
 </body>
 </html>
