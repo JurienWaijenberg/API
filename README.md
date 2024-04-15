@@ -2,4 +2,4 @@
 
 streamingplatform
 Zoekfunctie
-Shared functie
+Share functie

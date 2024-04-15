@@ -16,3 +16,17 @@ body {
   grid-gap: 1rem;
   padding: 1rem;
 }
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+  align-items: end;
+}
+
+.logo {
+  width: 6em;
+}
+
+
