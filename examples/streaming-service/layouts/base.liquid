@@ -25,11 +25,15 @@
     <a href="/">
       <img class="logo" src="/images/logo-no-background.png" alt="">
     </a>
-    <form action="/search" method="get">
-      <label for="search">Search</label>
-      <input id="search" type="search" name="term">
+    <form class="search-form" action="/search" method="get">
+      {% comment %} <label for="search">Search</label> {% endcomment %}
+      <input id="search" type="search" name="term" placeholder="Search">
 
-      <button type="submit">Search</button>
+      <button class="search-button" type="submit"><svg width="20" height="22" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="5.5" cy="5.5" r="4.5" stroke="#FF908B" stroke-width="2"/>
+      <line x1="8.41421" y1="9" x2="14" y2="14.5858" stroke="#FF908B" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      </button>
     </form>
   </header>
   {% block content %}{% endblock %}

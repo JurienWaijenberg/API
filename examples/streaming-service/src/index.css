@@ -5,9 +5,16 @@
 @import 'poster.css';
 @import "detail.css";
 
+:root {
+  --white: #fff;
+}
+
 body {
   background-color: #1a1a1a;
   color: #fff;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .grid {
@@ -15,6 +22,18 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1rem;
   padding: 1rem;
+}
+
+.grid-trailers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+iframe {
+  width: 430px;
+  height: 250px;
 }
 
 header {
@@ -26,7 +45,38 @@ header {
 }
 
 .logo {
-  width: 6em;
+  width: 4em;
 }
 
+form input {
+  background-color: var(--white);
+  border-radius: 50px;
+  height: 40px;
+  width: 15em;
+  border: 0px;
+  padding: 0.4em 3em 0.4em 1em;
+  font-size: 1em;
+}
 
+::placeholder {
+  color: #FF908B;
+  opacity: 1; /* Firefox */
+}
+
+.search-form {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 1em;
+}
+
+input:-internal-autofill-selected {
+  background-color: var(--white);
+}

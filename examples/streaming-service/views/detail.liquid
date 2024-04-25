@@ -14,15 +14,26 @@
     <p class="movie__info-description">{{ movie.overview }}</p>
     <p>Release date: {{ movie.release_date }}</p>
     <p>Rating: {{ movie.vote_average }}</p>
+    <div>
+    <p><button class="button">Share MDN!</button></p>
+    <p class="result"></p> 
+  </div>
   </div>
 
   <div class="backdrop-image__container">
     <img src="https://image.tmdb.org/t/p/w1280/{{ movie.backdrop_path }}" alt="" class="backdrop-image">
   </div>
-  <div>
-    <p><button class="button">Share MDN!</button></p>
-    <p class="result"></p> 
-  </div>
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube-nocookie.com/embed/{{ resultId }}?privacy_mode=1"
+    title="YouTube video player"
+    frameborder="0"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+  
 </div>
 
 {% comment %}<img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="Movieposter for {{ mov }}">{% endcomment %}
