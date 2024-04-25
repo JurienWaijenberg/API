@@ -42,7 +42,5 @@
 }
 
 .movie__info-description {
-  max-width: 400px;
-  text-align: right;
   margin-bottom: 20px;
 }
