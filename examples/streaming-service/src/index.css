@@ -7,6 +7,7 @@
 
 :root {
   --white: #fff;
+  --rose: #FF908B;
 }
 
 body {
@@ -17,6 +18,33 @@ body {
   margin-right: auto;
 }
 
+main {
+  padding: 1em;
+  padding-bottom: 10em;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5em;
+  font-weight: 600;
+  color: var(--rose);
+  margin: 1em 0em .4em 0em;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2em;
+  font-weight: 600;
+  color: var(--rose);
+  margin: 1em 0em .4em 0em;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  line-height: 1.2em;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -25,15 +53,52 @@ body {
 }
 
 .grid-trailers {
+  position: relative;
+  height: 1100px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.grid-trailers li:nth-child(1) {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.grid-trailers li:nth-child(1) iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.scroll-trailers {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 1rem;
-  padding: 1rem;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  grid-gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 1em;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  column-gap: 1em;
+}
+
+.scroll li {
+  min-width: 200px;
 }
 
 iframe {
   width: 430px;
   height: 250px;
+}
+
+section.theater {
+  margin-top: 2em;
 }
 
 header {
@@ -58,8 +123,14 @@ form input {
   font-size: 1em;
 }
 
+.movie__container iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
 ::placeholder {
-  color: #FF908B;
+  color: var(--rose);
   opacity: 1; /* Firefox */
 }
 
@@ -79,4 +150,26 @@ form input {
 
 input:-internal-autofill-selected {
   background-color: var(--white);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+  position: absolute;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--rose); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
 }

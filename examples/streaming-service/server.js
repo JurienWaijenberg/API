@@ -19,8 +19,11 @@ app
   .use('/', sirv('components/poster'))
   .listen(3000);
 
+  
+
 app.get('/', async (req, res) => {
   const movieData = await getMovies();
+  const nowPlaying = await getMovies();
 
   const movieIds = [];
 
@@ -28,7 +31,6 @@ app.get('/', async (req, res) => {
     movieIds.push(result.id);
   })
   console.log(movieIds);
-
 
 
   // Array to store fetched movie trailers
@@ -58,28 +60,14 @@ await Promise.all(movieIds.map(async movieKey => {
       }
     }
     
-    // If no trailer is found, push null to movieTrailers array
-    // if (!trailerFound) {
-    //   movieTrailers.push(null);
-    // }
   }
 }));
-
-
-  // const movieTrailers = await fetch (`https://api.themoviedb.org/3/movie/${movieIds}/videos?api_key=${process.env.MOVIEDB_TOKEN}`).then(res => res.json());
-  // const resultIds = movieTrailers.results.key;
-    // const trailerIds = [];
-
-    // movieTrailers.results.forEach(result => {
-    //   trailerIds.push(result.key);
-    // })
 
  
     console.log("All trailer data", movieTrailers);
   // console.log(movieData);
 
-  return res.send(renderTemplate('views/index.liquid', { title: 'Movies', movieData , movieTrailers }));
-  return res.send(renderTemplate('views/index.liquid', { title: 'Home' }));
+  return res.send(renderTemplate('views/index.liquid', { title: 'Movies', nowPlaying , movieTrailers }));
 });
 
 app.get('/movie/:id/', async (req, res) => {
@@ -118,11 +106,15 @@ app.get('/search', async (req, res) => {
 
 
 const getMovies = async () => {
-  const response = await fetch(`https://api.themoviedb.org/3/trending/all/day?language=en-US&api_key=${process.env.MOVIEDB_TOKEN}`);
+  const response = await fetch(`https://api.themoviedb.org/3/trending/all/week?language=en-US&api_key=${process.env.MOVIEDB_TOKEN}`);
   const movieData = await response.json();
-  // console.log('movieData', movieData);
 
-  return movieData;
+  const responseNowPlaying = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=${process.env.MOVIEDB_TOKEN}`);
+  const nowPlaying = await responseNowPlaying.json()
+  // console.log('movieData', movieData);
+  // console.log('nowPlaying', nowPlaying);
+
+  return movieData, nowPlaying;
 };
 
 
