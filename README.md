@@ -1,5 +1,7 @@
 # API 
 
+![Schermafbeelding van mijn applicatie](https://github.com/JurienWaijenberg/API/blob/a2ad7f11d42d8639a963022f639141365d8d0b81/images/Scherm%C2%ADafbeelding-applicatie.jpg)
+
 ## De opdracht
 
 Ik heb er voor gekozen om tijdens dit project een eigen streamplatform te maken. Hiervoor ga ik gebruik maken van de MovieDB API. In mijn server-side gerenderde applicatie ligt de focus voornamelijk op de trailers van de films. Op de homepagina is dit dan ook het eerste wat naar voren komt. Een trailer geeft een goed beeld van de film. Na een trailer weet je eigenlijk al gelijk of je deze film ook wilt zien of niet. Naast de home pagina is het de opdracht om ook een detailpagina te maken. Ook hier staat de trailer centraal.
